@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  app:
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=database
+      - REDIS_HOST=redis
+
+  database:
+    ports:
+      - "5432:5432"    # expose locally for GUI tools like TablePlus
+
+  redis:
+    ports:
+      - "6379:6379"    # expose locally for Redis CLI
+
+  # local only — Redis GUI
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    ports:
+      - "8081:8081"
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    depends_on:
+      - redis
