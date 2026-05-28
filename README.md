@@ -13,7 +13,7 @@ Redirect request → Redis cache → Hit: instant return
                               → Miss: PostgreSQL → cache in Redis → return
 
 ## Quick Start
-git clone https://github.com/YOUR_USERNAME/go-url-shortener
+git clone https://github.com/PriyankaGupta1705/go-url-shortener
 cd go-url-shortener
 cp .env.example .env     # fill in your values
 make local               # starts app + postgres + redis
